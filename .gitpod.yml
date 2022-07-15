@@ -8,6 +8,7 @@ tasks:
       export FLASK_ENV=development
     init: |
       pip install -e .
+      python -m pip install "pymongo[srv]"
       flask init-db
     command: |
       flask run

@@ -18,15 +18,17 @@ result = mycol_pet.aggregate([
         '$lookup': {
             'from': 'tutor',
             'localField': 'ID_Tutor',
-            'foreignField': 'id',
+            'foreignField': '_id',
             'as': 'joinedResult'
         }
     }
 ])
 
+for x in result:
+  print(x)
 myquery = { "nome": { "$regex": "^S" } }
 
 mydoc = mycol_pet.find(myquery)
 
-for x in mydoc:
-  print(x)
+#for x in mydoc:
+  #print(x)

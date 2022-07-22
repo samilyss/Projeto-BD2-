@@ -44,5 +44,5 @@ def inserir_exemplo_tutor():
     x = colecao_pet.insert_one(mydict)
     mydict = { "nome": "João", "telefone": "999999999", "cpf": "11987264371", "cep": "51030050" }
     x = colecao_pet.insert_one(mydict)
-    mydict = { "nome": "Lucas", "telefone": "955543643", "cpf": "11987264770", "cep": "60030044" }
+    mydict = { "nome": "Lucas", "telefone": "955543643", "cpf": "11987264770", "end": "60030044" }
     x = colecao_pet.insert_one(mydict)

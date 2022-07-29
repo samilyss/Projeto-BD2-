@@ -1,4 +1,5 @@
 import pymongo
+import pandas as pd
 myclient = pymongo.MongoClient("mongodb+srv://bd2:bd2senha@cluster0.lwjkt.mongodb.net/?retryWrites=true&w=majority")
 mydb = myclient["petshop"]
 mycol_pet = mydb["pet"]
@@ -24,10 +25,14 @@ def main():
         if(menu == 1):
         
             nome = str(input("Digite o nome do pet -> "))
+            agenda = []
             myquery = { "nome":  {"$regex": nome} }
             cursor = mycol_pet.find(myquery)
+          
             for i in cursor:
-                print(i)
+        
+             i = pd.Series({"Nome:": i['nome'], 'Raça:': i['raca'], 'Peso:': i['peso'], 'Idade:': i['idade']})
+             print(i)  
             main()
         elif(menu == 2):
             nome = str(input("Digite o nome do tutor -> "))
@@ -35,7 +40,6 @@ def main():
             cursor = mycol_tutor.find(myquery)
             for i in cursor:
                 print(i)
-                main()
             main()
         elif(menu == 3):
             nome = str(input("Digite o nome do pet -> "))
@@ -97,3 +101,9 @@ def main():
     
  
 main()
+
+
+#formatar para sair arrumado
+#tirar os ID
+#Retornar por parte do nome
+#Para alinhar as colunas à esquerda no dataframe do pandas, usamos a função dataframe. style. set_properties() .
